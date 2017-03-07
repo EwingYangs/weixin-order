@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<title>茶部落</title>
+		 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<link href="css/amazeui.min.css" type="text/css" rel="stylesheet" />
+		<link href="css/style.css" type="text/css" rel="stylesheet" />
+		<script src="js/jquery.min.js" type="text/javascript"></script>
+		<script src="js/amazeui.min.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<header data-am-widget="header" class="am-header am-header-default sq-head ">
+			<div class="am-header-left am-header-nav">
+				<a href="javascript:history.back()" class="" style="border: 0;">
+					<i class="am-icon-chevron-left"></i>
+				</a>
+			</div>
+			<h1 class="am-header-title">
+  	            <a href="" class="" style="color: #333;">历史订单</a>
+            </h1>
+
+	    </header>
+	    <div style="height: 49px;"></div>
+	    <ul class="address-list">
+	    	<li class="curr">
+			<p>订餐人：徐女士&nbsp;&nbsp;&nbsp;&nbsp;订单号：NB1645995</p>
+			<!-- <p class="order-add1">信息：排骨X5+鱼X3</p> -->
+			<p class="order-add1">订单总价：100元<span style="float:right">订单状态：已支付</span></p>
+			<p class="order-add1">下单时间：2017-1-28 19:48</p>
+			<hr />
+			<div class="address-cz">
+				<label class="am-radio am-warning">
+					<input type="radio" name="radio1" value="" data-am-ucheck checked>餐桌号:512
+				</label>
+				 <a class="doc-confirm-toggle"><i class="am-icon-trash am-icon-sm" ></i>&nbsp;取消</a>
+					<a href="order_detail.html" style="color:green">查看详情</a>
+			</div>
+			</li>
+			<li class="">
+				<p>订餐人：徐女士&nbsp;&nbsp;&nbsp;&nbsp;订单号：NB1645995</p>
+				<!-- <p class="order-add1">信息：排骨X5+鱼X3</p> -->
+				<p class="order-add1">订单总价：100元<span style="float:right">订单状态：已支付</span></p>
+				<p class="order-add1">下单时间：2017-1-28 19:48</p>
+				<hr />
+				<div class="address-cz">
+					<label class="am-radio am-warning">
+						<input type="radio" name="radio2" value="" data-am-ucheck checked>餐桌号:512
+					</label>
+					
+                 <a class="doc-confirm-toggle"><i class="am-icon-trash am-icon-sm" ></i>&nbsp;取消</a>
+	          
+					<a href="order_detail.html" style="color:green">查看详情</a>
+
+				</div>
+			</li>
+			
+
+
+	    </ul>
+		<div class="am-modal am-modal-confirm" tabindex="-1" id="my-confirm">
+		  <div class="am-modal-dialog">
+		    <div class="am-modal-bd" style="height: 80px; line-height: 80px;">  您确定要取消该订单吗？取消后支付的金额原路返回</div>
+		    <div class="am-modal-footer">
+		      <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+		      <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+		    </div>
+		  </div>
+		</div>
+	</body>
+</html>
+<script>
+	$('li').click(function(){
+		$('li').removeClass();
+		$(this).addClass('curr');
+	});
+	$(function() {
+		  $('#doc-modal-list').find('.am-icon-close').add('.doc-confirm-toggle').
+		    on('click', function() {
+		      $('#my-confirm').modal({
+		        relatedTarget: this,
+		        onConfirm: function(options) {
+		          var $link = $(this.relatedTarget).prev('a');
+		          var msg = $link.length ? '你要删除的饮品 为 ' + $link.data('id') :
+		            '确定了';
+		//        alert(msg);
+		        },
+		        onCancel: function() {
+		          //alert('不删除');
+		        }
+		      });
+		    });
+		});
+</script>
+

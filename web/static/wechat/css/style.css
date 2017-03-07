@@ -1,0 +1,174 @@
+li{ list-style-type: none;}
+ul{ padding: 0; margin: 0;}
+.sq-head { position: fixed; top: 0; width: 100%; z-index: 100; background: #fff; border-bottom: 1px solid #ddd;}
+.sq-head .am-icon-trash{ color: #999;}
+.sq-head .am-header-left a { border: 1px solid #ddd; color: #999; padding: 0 8px; height: 35px; line-height: 35px; border-radius: 8px;}
+.content-list{border-top: 1px solid #ddd; margin-top: -1px;  width: 100%;}
+.list-content{ position: relative; overflow: hidden; }
+.list-left{ width: 25%; position: fixed;  height: 90%;  top: 50px;  overflow: auto; border-right: 1px solid #ddd; }
+.list-left li {width: 100%;  font-size: 1.4rem;
+    height: 4rem;line-height: 4rem;text-align: center; border-bottom: 1px solid #ddd;overflow: hidden;}
+.list-left li a{ color: #666;}
+.list-left .current{ border-left: 3px solid #39b867;}
+.list-left .current a{ color: #39b867;}
+.list-right{ float: right; width: 75%;padding-bottom: 50px;}
+.list-right .am-gallery-item{ text-align: center; position: relative;}
+.list-right .am-gallery li{ margin: 1rem 0;}
+.list-right .am-gallery-default .am-gallery-item img {
+    width: 8.5rem;
+    height: auto;
+    height: 8.5rem;
+    border-radius: 5px;
+}
+.list-right .am-gallery-default .am-gallery-title{ text-align: center; font-size: 1.6rem; margin-top: 10px;}
+.list-pro{ overflow: hidden; padding-bottom: 60px; margin-top: 60px;}
+.list-pro li{ position: relative; border-bottom: 1px solid #ddd; margin: 0px 3%; padding: 15px 0; overflow: hidden;}
+.list-pic{ float: left; width: 30%;  padding: 3px; border: 1px solid #ddd;}
+.list-pro .am-gallery-desc { color: #cb2527; font-size: 1.6rem;}
+.list-cart{  height: 45px; text-align: center; position: absolute; right: 0px;  bottom: 0px;  border-radius: 50%;}
+.list-cart img{ margin-top: 8px;}
+.list-cart .d-stock{ width: 7.5rem; float: right;}
+.list-cart .d-stock .decrease{border-radius:50%; display: none; color: #666; float: left; border: 1px solid #dadada; width: 2.5rem; height: 2.5rem; line-height: 2.5rem; text-align: center;}
+.list-cart .d-stock .text_box{ display: none; float: left; border:0; width: 2.5rem; height: 2.5rem; line-height: 2.5rem; text-align: center; }
+.list-cart .d-stock .increase{border-radius:50%; font-size: 1.6rem; background: #39b867; color: #fff; float: right; /*border: 1px solid #dadada;*/ width: 2.5rem; height: 2.5rem; line-height: 2.5rem; text-align: center; margin-left:-1px;}
+.shop-list-mid .tit a{color: #909090; display: block; height: 20px;
+    font-size: 1.4rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    white-space:nowrap
+    text-overflow: ellipsis;}
+.fix-bot{ border-top: 1px solid #ddd; position: fixed; bottom: 0; height: 4.5rem; width: 100%; background: #fff; }
+.fix-bot-cart{background: url(../images/shopcart.png) no-repeat; float: left; margin-left: 3%; margin-top: -12px; width: 5rem; height: 5rem; background-size: contain;}
+.fix-bot-cart i{ width: 20px; height: 20px; text-align: center; float: right; color: #fff; font-style: normal; line-height: 20px; border-radius: 50%; background: #ffc618; display: block;}
+.shop-list-mid { float: left; width: 65%; margin-left: 0.625rem;}
+.shop-list-mid p{ color: #9c9b9b;}
+.shop-list-mid .tit a{ color: #909090; font-size: 1.4rem;  display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    white-space: normal;
+    text-overflow: ellipsis;}
+.shop-list-mid .shop-list-price{color: #cb2527; }
+.list-js{ font-size: 16px; color: #000; margin-left: 10px; line-height: 54px;}
+.list-jsk{ float: right;     color: #FFF;
+    margin-right: 10px;
+    font-size: 16px;
+    background: #39b867; display: block; padding: 5px 20px; margin-top: 8px;}
+.list-js i{ color: red; font-style: normal; padding-left:5px;  font-weight: bold;}
+.list-js em{ font-style: normal; color: #666; }
+.num{ position: absolute; width: 20px; height: 20px; border-radius: 50%; background:red; color: #fff; text-align: center; line-height: 20px; font-style: normal; top: -5px; right: -16px;}
+.eat-list{ overflow:hidden;}
+.eat-list .name{ width: 20%;  float: left; height: 30px; line-height: 30px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;}
+.eat-list .price{ width: 15%; float: left; height: 30px; color: #999; line-height: 30px; font-style: normal;}
+.eat-list .d-stock{ width: 7.5rem; float: right;}
+.eat-list .d-stock .decrease{border-radius:50%; color: #666; float: left; border: 1px solid #dadada; width: 2.5rem; height: 2.5rem; line-height: 2.5rem; text-align: center;}
+.eat-list .d-stock .text_box{ float: left; border:0; width: 2.5rem; height: 2.5rem; line-height: 2.5rem; text-align: center; }
+.eat-list .d-stock .increase{border-radius:50%; font-size: 1.6rem; background: #39b867; color: #fff; float: right; /*border: 1px solid #dadada;*/ width: 2.5rem; height: 2.5rem; line-height: 2.5rem; text-align: center; margin-left:-1px;}
+.eat-list li{ border-bottom: 1px solid #ddd; overflow: hidden; padding: 10px;}
+.juli{ height: 10px; background: #f5f5f5;}
+
+#datescroll div{float: left;margin-left: 10%;margin-top: 20px;padding-right: 22px;}
+#datescroll_datetime div{float: left;margin-left: 10%;padding-right: 22px;}
+#yearwrapper{position: absolute;left: 0;top:45px;bottom: 60px;width:80%;}
+#monthwrapper{position: absolute;left: 26%;top:45px;bottom: 60px;width:80%;}
+#daywrapper{position: absolute;left: 50%;top:45px;bottom: 60px;width:80%;}
+#Hourwrapper{position: absolute;left: 0;top:195px;bottom: 68px;width:80%;}
+#Minutewrapper{position: absolute;left: 26%;top:195px;bottom: 68px;width:80%;}
+#Secondwrapper{position: absolute;left: 50%;top:195px;bottom: 68px;width:80%;}
+#Hourwrapper ul li{color: #898989;font-size: 12px;}
+#Minutewrapper ul li{color: #898989;font-size: 12px;}
+#Secondwrapper ul li{color: #898989;font-size: 12px;}
+#yearwrapper ul li{color: #898989;font-size: 12px;}
+#monthwrapper ul li{color: #898989;font-size: 12px;}
+#daywrapper ul li{color: #898989;font-size: 12px;}
+#markyear{position:relative; margin-left: 76px;top:-2px;}
+#markmonth{position:relative; margin-left: 40px;top:-2px;}
+#markday{position:relative; margin-left: 42px;top:-2px;}
+#markhour{position:relative; margin-left: 62px;top:-2px;}
+#markminut{position:relative; margin-left: 58px;top:-2px;}
+#marksecond{position:relative; margin-left: 68px;top:-2px;}
+#dateheader{width: 100%;height: 50px;background: #79C12F;text-align: center;color: #fff;line-height: 50px;font-size: 20px;}
+#setcancle ul{text-align: center;line-height: 30px; margin:1px auto;font-size: 20px;}
+#setcancle ul li{border-radius:3px;float: left;width: 40%;height: 30px;list-style-type: none;font-family:'microsoft yahei';font-size:16px;}
+#dateconfirm{position: absolute;background:#ff5500;left:20px;color:#fff;}
+#datecancle{position: absolute;background:  #dcdddd;right:20px;width: 40%;color:#666;}
+#dateshadow{display: none;position: fixed; z-index:10000; width: 100%;height: 100%;top:0;left:0;background: rgba(0,0,0,.5); }
+#datePage{font-size: 22px; left: 10%;  border-radius: 15px; position:absolute;top:30%;MARGIN-RIGHT: auto;vertical-align:middle;
+MARGIN-LEFT: auto;width: 80%;height: 300px;background: #FFFFFF;z-index:9999999;}
+#datetitle{width: 100%;height:50px; border-bottom: 1px solid #ff5500; color: #fff;line-height: 50px; font-family:'microsoft yahei';}
+#datetitle h1{font-weight:normal; color: #ff5500; font-size:18px; text-indent: 24px;}
+#datemark{font-size: 18px;left:5%;width: 90%;height: 20px;position:absolute;top:115px;background:#eee;border:1px solid #eee;}
+#timemark{font-size: 18px;left:5%;width: 90%;height: 20px;position:absolute;top:242px;background:#eee;border:1px solid #eee;}
+#datescroll{background: #F8F8F8;width:94%; margin:15px 0 0 3%;border: 1px solid #E0E0E0;border-radius: 4px;height: 120px;text-align: center;line-height: 40px;}
+#datescroll_datetime{display: none;background:#F8F8F8;width:94%; margin:10px 3%;margin-top: 10px;border: 1px solid #E0E0E0;border-radius: 4px;height: 120px;text-align: center;line-height: 40px;}
+#yearwrapper ul,#monthwrapper ul,#daywrapper ul{width:40%;}
+#Hourwrapper ul,#Minutewrapper ul,#Secondwrapper ul{width:40%;}
+#dateFooter{width:100%;height: 50px;bottom: 0px;position: absolute;}
+.yytime {
+    margin-top: 15px;
+    overflow: hidden;
+}
+.yytime li {
+    float: left;
+    width: 50%;
+}
+.yytime .curr a {
+    border: 1px solid #ff5500;
+    color: #ff5500;
+}
+.yytime li a {
+    width: 80%;
+    margin: 0 auto;
+    font-size: 1.4rem;
+    padding: 0.5rem 0;
+    border: 1px solid #ddd;
+    display: block;
+    color: #666;
+}
+.list-detail{ overflow: hidden;}
+.kbtn{ color: #999; border: 0; display: block; line-height: 30px; font-size: 16px; width: 70%; float: left;}
+.list-detail .time{ line-height: 30px; padding: 10px; border-bottom: 1px solid #ddd; overflow: hidden;  position: relative;}
+.list-detail .time span{ width:30%; float: left;} 
+.list-detail .am-icon-angle-right{position: absolute; right: 1rem; top: 12px;}
+P{ padding: 0; margin: 0;}
+.list-detail .address{ width: 70%; float: left; color: #999;}
+.bz-infor { width: 94%; margin: 10px 3%; height: 2.8rem; padding-left: 5px; border: 0;}
+.pricebox p{ color: #aaa; text-align: center; line-height: 35px;}
+em ,i{ font-style: normal;}
+.pricebox  i{ color: #39b867; font-weight: bold;}
+.pricebox em{ color: #000;}
+.paybtn{ background:#39b867 ; border-radius: 8px; margin-top: 8px; color: #fff; border: 0; text-align: center; width: 70%; margin: 0 auto; display: block; line-height: 35px; height: 35px;}
+.contact{ padding: 10px;}
+.contact input{ border: 1px solid #ddd; border-radius: 5px; width: 100%; line-height: 35px; padding-left: 10px;}
+.contact li{ margin: 10px 0;}
+.address-list{ margin: 20px 3%; color: #666; padding-bottom: 20px;}
+.address-list li{ border-radius: 5px; border:1px solid #ddd; padding: 10px 0px; margin-bottom: 20px;}
+.address-list .curr{ border: 1px solid #39b867;}
+.address-list li p{ padding: 2px 20px;}
+.order-add1{ font-size:1.4rem; color: #bbb;}
+.address-list hr{ margin: 10px 0;}
+.address-cz{ overflow: hidden; padding:0 20px; color: #bbb;}
+.address-cz a{ color: #bbb;}
+.address-cz label{ float: left; margin: 0;}
+.address-cz a{ float: left; width: 30%; text-align: right; font-size: 1.4rem;}
+.am-icon-checked{ color: #39b867;}
+.list-detail .am-btn-primary{ background: none; width: 70%; border: 0; color: #999; padding: 0; text-align: left;}
+.am-modal{ width: 100%; left:0; bottom: 0; margin-left: 0; bottom: 0; }
+.num-left{ width: 50%; float: left; position: absolute; background: #39b867; color: #fff;}
+.num-right{ width: 50%; float: right;}
+.am-modal-bd{ background: #fff; height: 120px; overflow: auto; padding: 0;}
+.am-modal-dialog{ overflow: hidden;}
+.numren{ line-height: 40px;  font-size: 13px;}
+.numren .cur{ background: #39b867; color: #fff;}
+.num-right li{ line-height: 40px; font-size: 13px;}
+.banner img{ width: 100%;} 
+.return{ position: absolute; left: 15px; top: 15px; font-size: 20px;}
+.return a{color: #fff;}
+.share{ position: absolute; top: 15px; right: 15px; color: #fff; font-size: 20px;}
+.detail{ padding: 15px; position: relative;}
+.detail p{ color: red;}
+.shopcart{ position: absolute; top: 22px; right: 15px; padding: 5px 8px; color: #fff; background: #39b867;}
+.yd_img{ padding: 15px; z-index: 110px; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8);}
+.yd_img img{ width: 100%;}
