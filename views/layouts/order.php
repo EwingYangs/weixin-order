@@ -117,20 +117,15 @@ if( Yii::$app->getSession()->hasFlash('error') ) {
                 <a href="<?=Yii::$app->urlManager->createUrl('order/index');?>">
                     <span class="glyphicon glyphicon-list"></span> 订单管理 <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="glyphicon glyphicon-s glyphicon-plus"></em></span> 
                 </a>
-                <ul class="children collapse" id="sub-item-1">
-                    <li>
-                        <a class="" href="#">
-                            <span class="glyphicon glyphicon-share-alt"></span> Sub Item 1
+                <ul class="children collapse <?php if(Yii::$app->controller->id == "order"){echo "in";}?>" id="sub-item-1">
+                    <li class='<?php if(Yii::$app->controller->id == "order" && Yii::$app->controller->action->id == "index"){echo "active";}?>'>
+                        <a class="" href="<?=Yii::$app->urlManager->createUrl('order/index');?>">
+                            <span class="glyphicon glyphicon-share-alt"></span> 等待接单列表
                         </a>
                     </li>
                     <li>
-                        <a class="" href="#">
-                            <span class="glyphicon glyphicon-share-alt"></span> Sub Item 2
-                        </a>
-                    </li>
-                    <li>
-                        <a class="" href="#">
-                            <span class="glyphicon glyphicon-share-alt"></span> Sub Item 3
+                        <a class="" href="<?=Yii::$app->urlManager->createUrl('order/success');?>">
+                            <span class="glyphicon glyphicon-share-alt"></span> 已配送订单列表
                         </a>
                     </li>
                 </ul>

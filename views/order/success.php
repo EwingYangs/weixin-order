@@ -1,23 +1,23 @@
 <?php
-$this->title = '用户管理';
+$this->title = '订单管理';
 $this->context->layout = 'order';
 $this->registerJsFile(Yii::$app->params['js_url'].'bootstrap-table.js');
-
+use app\models\Order;
 ?>
 
 <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">           
         <div class="row">
             <ol class="breadcrumb">
                 <li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
-                <li class="active">用户管理</li>
+                <li class="active">订单管理</li>
             </ol>
         </div><!--/.row-->
 
         <div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading">用户列表
-                        <span class="pull-right"><span class="glyphicon glyphicon-user"></span>用户总数:<?=$num?></span>
+                    <div class="panel-heading">已配送订单列表
+                    
                     </div>
 
                     <div class="panel-body">
@@ -26,27 +26,32 @@ $this->registerJsFile(Yii::$app->params['js_url'].'bootstrap-table.js');
                             <tr>
                                 <th data-field="state" data-checkbox="true" >Item ID</th>
                                 <th data-field="id" data-sortable="true">用户编号</th>
-                                <th data-field="nickName" data-sortable="true">用户名称</th>
+                                <th data-field="userid" data-sortable="true">用户Id</th>
                                 <!-- <th data-field="avatarUrl">用户头像</th> -->
-                                <th data-field="gender" data-sortable="true">性别</th>
-                                <th data-field="credit"  data-sortable="true">积分</th>
-                                <th data-field="opneid">opneid</th>
-                                <th data-field="create_at" data-sortable="true">创建时间</th>
-                                <th data-field="delete">操作</th>
+                                <th data-field="order_time" data-sortable="true">订单生成时间</th>
+                                <th data-field="pay_status">支付状态</th>
+                                <th data-field="pay_time" data-sortable="true">支付时间</th>
+                                <th data-field="total_price" data-sortable="true">订单的总价</th>
+                                <th data-field="table_number" data-sortable="true">桌子编号</th>
+                                <th data-field="remark" data-sortable="true">订单备注</th>
+                                <th data-field="people" data-sortable="true">就餐人数</th>
                             </tr>
                             
                             </thead>
-                            <?php foreach($users as $k=>$v){?>
+                            <?php foreach($order as $k=>$v){?>
                                 <tr>
                                     <td data-field="state" data-checkbox="true" >Item ID</td>
                                     <td><?=$v['id']?></td>
-                                    <td><?=$v['nickName']?></td>
-                                    <!-- <td><img src="<?=$v['avatarUrl']?>" width="80"></td> -->
-                                    <td><?=$v['gender']?></td>
-                                    <td><?=$v['credit']?></td>
-                                    <td><?=$v['openid']?></td>
-                                    <td><?=date('Y-m-d H:i',$v['create_at'])?></td>
-                                    <td><a style="cursor: pointer;" data-target="#myModal1" data-toggle="modal" onclick="$('#deleteUser').attr('userid',<?=$v['id']?>)">删除</a></td>
+                                    <td><?=$v['user_id']?></td>
+                                    
+                                    <td><?=date('Y-m-d H:i',$v['order_time'])?></td>
+                                    <td><?=Order::$pay_status[$v['pay_status']]?></td>
+                                    <td><?=date('Y-m-d H:i',$v['pay_time'])?></td>
+                                    <td><?='￥'.$v['total_price']?></td>
+                                    <td><?=$v['table_number']?></td>
+                                    <td><?=$v['remark']?></td>
+                                    <td><?=$v['people']?></td>
+                                    
                                 </tr>
                             <?php }?>
                         </table>
@@ -65,7 +70,7 @@ $this->registerJsFile(Yii::$app->params['js_url'].'bootstrap-table.js');
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span>
                     </button>
-                    <h4 class="modal-title">你确定要删除吗？</h4>
+                    <h4 class="modal-title">你确定要配送吗？</h4>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-white" data-dismiss="modal">取消</button>
