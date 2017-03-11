@@ -1,13 +1,14 @@
 <?php 
+
 ini_set('date.timezone','Asia/Shanghai');
 //error_reporting(E_ERROR);
 require_once(Yii::getAlias('@wxPay') . '/lib/WxPay.Api.php');
 require_once(Yii::getAlias('@wxPay') . '/WxPay.JsApiPay.php');
 require_once(Yii::getAlias('@wxPay') . '/log.php');
-
+$notify_url = 'https://'.$_SERVER['SERVER_NAME'].Yii::$app->urlManager->createUrl("wechat/notify/notify");
 
 //初始化日志
-$logHandler= new CLogFileHandler("../logs/".date('Y-m-d').'.log');
+$logHandler= new CLogFileHandler("../Paylogs/".date('Y-m-d').'.log');
 $log = Log::Init($logHandler, 15);
 
 //打印输出数组信息
@@ -17,11 +18,9 @@ function printf_info($data)
         echo "<font color='#00ff55;'>$key</font> : $value <br/>";
     }
 }
-
 //①、获取用户openid
 $tools = new JsApiPay();
-$openId = $tools->GetOpenid();
-
+$openId = $openid;
 //②、统一下单
 $input = new WxPayUnifiedOrder();
 $input->SetBody("test");
@@ -31,7 +30,7 @@ $input->SetTotal_fee("1");
 $input->SetTime_start(date("YmdHis"));
 $input->SetTime_expire(date("YmdHis", time() + 600));
 $input->SetGoods_tag("test");
-$input->SetNotify_url("http://paysdk.weixin.qq.com/example/notify.php");
+$input->SetNotify_url($notify_url);
 $input->SetTrade_type("JSAPI");
 $input->SetOpenid($openId);
 $order = WxPayApi::unifiedOrder($input);
@@ -64,8 +63,17 @@ $editAddress = $tools->GetEditAddressParameters();
 			'getBrandWCPayRequest',
 			<?php echo $jsApiParameters; ?>,
 			function(res){
-				WeixinJSBridge.log(res.err_msg);
-				alert(res.err_code+res.err_desc+res.err_msg);
+				// WeixinJSBridge.log(res.err_msg);
+				// alert(res.err_code+res.err_desc+res.err_msg);
+
+			   if(res.err_msg=='get_brand_wcpay_request:ok'){
+    	    	    alert('恭喜您，支付成功!');
+    	    	    //跳转到订单页面
+    	    	    sleep('5');
+    	    	    location.href = '<?=Yii::$app->urlManager->createUrl("wechat/index/index?history=1")?>';
+    	       }else{
+    	    	    alert('支付失败'+res.err_msg);//这里一直返回getBrandWCPayRequest提示fail_invalid appid
+    	       }
 			}
 		);
 	}

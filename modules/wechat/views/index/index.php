@@ -1,63 +1,126 @@
 <?php
 $this->title = '点餐首页';
 ?>
-<div class="am-tabs" data-am-tabs>
-  <ul class="am-tabs-nav am-nav am-nav-tabs">
-    <li class="am-active"><a href="#tab1">点餐</a></li>
-    <li><a href="#tab2">用户中心</a></li>
-    <li><a href="#tab3">订单中心</a></li>
-  </ul>
-<header data-am-widget="header" class="am-header am-header-default sq-head ">
-
-
-  <div class="am-tabs-bd">
-    <div class="am-tab-panel am-fade am-in am-active" id="tab1">
-           <!-- <div class="am-header-right am-header-nav">
-              <button type="button" class="am-btn am-btn-warning" id="doc-confirm-toggle" style="background: none; border: 0; font-size: 24px;">
-                 <i class="am-header-icon am-icon-trash"></i>
-              </button>
-            </div> -->
-            <div class="am-header-right">
-                <span class="am-monospace" style="color:red">下单可享受，每满30减3</span>
-                <span class="am-monospace" style="float:right;color:gray">当前的积分：2</span>
-            </div>
+<style>
+	
+</style>
+<!-- 头部信息 -->
+<header data-am-widget="header" class="am-header am-header-default sq-head">
+    <div class="am-tab-panel am-fade am-in am-active" >
+	
+    <div class="am-header-right">
+        <span class="am-monospace" style="color:red"><span class="am-icon-flag"></span>&nbsp;下单可享受，每满30减3</span>
+        <span class="am-monospace" style="float:right;color:gray">当前的积分：2</span>
+    </div>
+	</div>
 </header>
-	    <div class="content-list" id="outer">
-	    	<div class="list-left" id="tab">
-	    		
-	    	</div>
-	    	<div class="list-right" id="content_div">
-	    		
-	            
-	    	</div>
-	    	<!-- <form> -->
-	    </div>
-	    <!--底部-->
- <div style="height: 100px;"></div>
- <div class="fix-bot">
-	   	  <a href="" class="list-js">合计：<i><span id="money">0<span>元</i><em>(<span id="number">0</span>份)</em></a>
-	   	  <a href="javascript:void(0)" id="affirm" class="list-jsk">选好了</a>
- </div>
+	 <div class="fix-head" style="padding:0px;margin:0px">
+	 	<div class="am-tabs" id="click_div">
+		  <ul class="am-nav am-nav-tabs am-nav-justify" style="">
+		    <li class="am-active" id="order"><a><span class="am-icon-fire"></span>&nbsp;点餐</a></li>
+		    <li class="" id="user"><a><span class="am-icon-user"></span>&nbsp;个人中心</a></li>
+		    <li class="" id="history"><a><span class="am-icon-bookmark-o"></span>&nbsp;历史订单</a></li>
+		  </ul>
+		</div>
+	 </div>
+	<div id="box">
+	<div class="am-show tabslist" id="div_order">
+		<div>
+		    <div class="">
+		    	<div class="list-left" id="tab"></div>
+		    	<div class="list-right" id="content_div">
+		    	</div>
+		    	<!-- <form> -->
+		    </div>
+		</div>
+		<!--底部-->
+			<!-- <div style="height: 100px;"></div> -->
+		<div class="fix-bot">
+			   	  <a href="" class="list-js">合计：<i><span id="money">0<span>元</i><em>(<span id="number">0</span>份)</em></a>
+			   	  <a href="javascript:void(0)" id="affirm" class="list-jsk">立即下单</a>
+		</div>
+	</div>
+	<div class="am-hide tabslist list-tabs" id="div_user">
+		    	<img style="padding:10px" class="am-circle" src="<?=isset($userInfo->headimgurl) ? $userInfo->headimgurl : 'http://img3.imgtn.bdimg.com/it/u=275622820,2944364039&fm=21&gp=0.jpg'?>" width="80" height="80"/>
+		    	&nbsp;&nbsp;&nbsp;<?=isset($userInfo->nickname) ? $userInfo->nickname : '未登录'?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    	<span style="color:gray">所在城市：<?=isset($userInfo->city) ? $userInfo->city : '未知'?><span>
+		    </ul>
+		    <div class="juli"></div>
+		    <ul class="list-detail">
+		    	<li class="time">
+		    		<span>订单</span>
+		    		
+		    		<i class="am-icon-angle-right"></i>
+		    	</li>
+		    	<li class="time">
+		    		<span>线上积分</span><span style="float:right;color:red">34.00
+		    		</span>
+		    		<i class="am-icon-angle-right"></i>
+		    	</li>
+		    	<li class="time">
+		    		<span>门店活动</span>
+		    		<i class="am-icon-angle-right"></i>
+		    	</li>
+		    </ul>
+	</div>
+	<div class="am-hide tabslist list-tabs" id="div_history">
+		<ul class="address-list">
+	    	<li class="curr">
+			<p>订餐人：徐女士&nbsp;&nbsp;&nbsp;&nbsp;订单号：NB1645995</p>
+			<!-- <p class="order-add1">信息：排骨X5+鱼X3</p> -->
+			<p class="order-add1">订单总价：100元<span style="float:right">订单状态：已支付</span></p>
+			<p class="order-add1">下单时间：2017-1-28 19:48</p>
+			<hr />
+			<div class="address-cz">
+				<label class="am-radio am-warning">
+					<input type="radio" name="radio1" value="" data-am-ucheck checked>餐桌号:512
+				</label>
+                 <button  type="button" class="am-btn am-btn-success am-radius am-btn-xs am-fr" data-am-modal="{target: '#my-alert'}">取消订单</button>
+			</div>
+			</li>
+			<li class="">
+				<p>订餐人：徐女士&nbsp;&nbsp;&nbsp;&nbsp;订单号：NB1645995</p>
+				<!-- <p class="order-add1">信息：排骨X5+鱼X3</p> -->
+				<p class="order-add1">订单总价：100元<span style="float:right">订单状态：已支付</span></p>
+				<p class="order-add1">下单时间：2017-1-28 19:48</p>
+				<hr />
+				<div class="address-cz">
+					<label class="am-radio am-warning">
+						<input type="radio" name="radio2" value="" data-am-ucheck checked>餐桌号:512
+					</label>
+					
+                <!--  <a type="button" class="doc-confirm-toggle" data-am-modal="{target: '#my-alert'}"><i class="am-icon-trash am-icon-sm" ></i>&nbsp;取消</a> -->
+                 <button  type="button" class="am-btn am-btn-success am-radius am-btn-xs am-fr" data-am-modal="{target: '#my-alert'}">取消订单</button>
+				</div>
+			</li>
+	    </ul>
+		
+	</div>
 </div>
-	<div class="am-tab-panel am-fade" id="tab2">
-      用户中心
+
+<!--  <div class="am-modal am-modal-confirm" tabindex="-1" id="my-confirm">
+		  <div class="am-modal-dialog">
+		    <div class="am-modal-bd" style="height: 80px; line-height: 80px;">  您确定要取消该订单吗？取消后支付的金额原路返回</div>
+		    <div class="am-modal-footer">
+		      <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+		      <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+		    </div>
+		  </div>
+		</div> -->
+<div class="am-modal am-modal-alert" tabindex="-1" id="my-alert">
+  <div class="am-modal-dialog">
+    <div class="am-modal-hd">取消订单</div>
+    <div class="am-modal-bd">
+      您确定要取消该订单吗？取消后支付的金额原路返回
     </div>
-    <div class="am-tab-panel am-fade" id="tab3">
-     订单中心
+    <div class="am-modal-footer">
+      <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+	  <span class="am-modal-btn" data-am-modal-confirm>确定</span>
     </div>
-<div>
-
-
-
-  
-      
-    
-    
   </div>
 </div>
- 
-
- <div class="am-modal am-modal-confirm" tabindex="-1" id="my-confirm">
+<!-- 模态框 -->
+<!-- <div class="am-modal am-modal-confirm" tabindex="-1" id="my-confirm">
   <div class="am-modal-dialog">
     <div class="am-modal-bd" style="height: 80px; line-height: 80px;">  您确定要清空饮品吗？</div>
     <div class="am-modal-footer">
@@ -65,7 +128,7 @@ $this->title = '点餐首页';
       <span class="am-modal-btn" data-am-modal-confirm>确定</span>
     </div>
   </div>
-</div>
+</div> -->
 
 <script>
 
@@ -74,6 +137,24 @@ $this->title = '点餐首页';
 
 <?php
     $this->beginBlock('service') ?>
+
+    $('#div_history').find('li').click(function(){
+		$('#div_history').find('li').removeClass();
+		$(this).addClass('curr');
+	});
+    $('#click_div').find('li').click(function(){
+    		$('#click_div').find('li').removeClass('am-active');
+			$(this).addClass('am-active');
+			var name = '#div_'+$(this).attr('id');
+			console.log($('#name'));
+			console.log(name);
+			$('#box').children('.tabslist').addClass('am-hide');
+			$(name).removeClass('am-hide');
+			$(name).addClass('am-show');
+	});
+    $(function() {
+    	$('#doc-my-tabs').tabs();
+  	})
     	var serverName = "http://www.gdqcyl.pub/";
     	var orderUrl = "<?=Yii::$app->urlManager->createUrl('wechat/index/order')?>";
 $(function(){

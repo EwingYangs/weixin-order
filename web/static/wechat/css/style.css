@@ -5,13 +5,14 @@ ul{ padding: 0; margin: 0;}
 .sq-head .am-header-left a { border: 1px solid #ddd; color: #999; padding: 0 8px; height: 35px; line-height: 35px; border-radius: 8px;}
 .content-list{border-top: 1px solid #ddd; margin-top: -1px;  width: 100%;}
 .list-content{ position: relative; overflow: hidden; }
-.list-left{ width: 25%; position: fixed;  height: 90%;  top: 50px;  overflow: auto; border-right: 1px solid #ddd; }
+.list-left{ width: 25%; position: fixed;  height: 90%;  top: 90px;  overflow: auto; border-right: 1px solid #ddd; }
+.list-tabs{ width: 100%; position: fixed;  height: 90%;  top: 100px;  overflow: auto; border-right: 0px solid #ddd; }
 .list-left li {width: 100%;  font-size: 1.4rem;
     height: 4rem;line-height: 4rem;text-align: center; border-bottom: 1px solid #ddd;overflow: hidden;}
 .list-left li a{ color: #666;}
 .list-left .current{ border-left: 3px solid #39b867;}
 .list-left .current a{ color: #39b867;}
-.list-right{ float: right; width: 75%;padding-bottom: 50px;}
+.list-right{ float: right; width: 75%;position: relative;  height: 90%;  top: 90px;}
 .list-right .am-gallery-item{ text-align: center; position: relative;}
 .list-right .am-gallery li{ margin: 1rem 0;}
 .list-right .am-gallery-default .am-gallery-item img {
@@ -21,7 +22,7 @@ ul{ padding: 0; margin: 0;}
     border-radius: 5px;
 }
 .list-right .am-gallery-default .am-gallery-title{ text-align: center; font-size: 1.6rem; margin-top: 10px;}
-.list-pro{ overflow: hidden; padding-bottom: 60px; margin-top: 60px;}
+.list-pro{ overflow: hidden;  }
 .list-pro li{ position: relative; border-bottom: 1px solid #ddd; margin: 0px 3%; padding: 15px 0; overflow: hidden;}
 .list-pic{ float: left; width: 30%;  padding: 3px; border: 1px solid #ddd;}
 .list-pro .am-gallery-desc { color: #cb2527; font-size: 1.6rem;}
@@ -52,6 +53,7 @@ ul{ padding: 0; margin: 0;}
     text-overflow: ellipsis;}
 .shop-list-mid .shop-list-price{color: #cb2527; }
 .list-js{ font-size: 16px; color: #000; margin-left: 10px; line-height: 54px;}
+.fix-head{ border-bottom: 0px solid #ddd; position: fixed; top: 48px; height: 4.5rem; width: 100%; background: #fff; }
 .list-jsk{ float: right;     color: #FFF;
     margin-right: 10px;
     font-size: 16px;

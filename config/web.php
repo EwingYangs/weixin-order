@@ -13,6 +13,9 @@ $config = [
             'class' => 'app\modules\wechat\Module',
         ],
     ],
+    'aliases' => [
+        '@wxPay' => '@vendor/wxPay',
+    ],
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation

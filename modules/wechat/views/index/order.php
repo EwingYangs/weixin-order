@@ -84,7 +84,7 @@ $this->title = '下单页面';
 	    <div class="pricebox">
 	    	<p>总价：<i><span id="momey">12<span>.00</i>元（<em><span id="count">1<span></em>份）</p>
 	    	<p>请选择支付方式并确认下单：</p>
-	    	<a href="jsapi.php"><button class="paybtn" type="button" > 微信支付></button></a>
+	    	<a href="<?=Yii::$app->urlManager->createUrl('wechat/index/wx')?>"><button class="paybtn" type="button" > 微信支付</button></a>
 	    </div>
 	    
 		 <div class="am-modal am-modal-confirm" tabindex="-1" id="my-confirm">
@@ -183,7 +183,7 @@ $this->title = '下单页面';
 		//        alert(msg);
 		        },
 		        onCancel: function() {
-		          alert('不删除');
+		          alert('不清空');
 		        }
 		      });
 		    });
