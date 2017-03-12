@@ -23,6 +23,7 @@ $this->registerJsFile('js/bootstrap-table.js');
         <div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >网页模板</a></div>
         
         <div class="row">
+            <a href="<?=Yii::$app->urlManager->createUrl('order/index')?>">
             <div class="col-xs-12 col-md-6 col-lg-3">
                 <div class="panel panel-blue panel-widget ">
                     <div class="row no-padding">
@@ -30,25 +31,29 @@ $this->registerJsFile('js/bootstrap-table.js');
                             <em class="glyphicon glyphicon-shopping-cart glyphicon-l"></em>
                         </div>
                         <div class="col-sm-9 col-lg-7 widget-right">
-                            <div class="large">120</div>
+                            <div class="large"><?=$data['orders'] ? $data['orders']: '0'?></div>
                             <div class="text-muted">New Orders</div>
                         </div>
                     </div>
                 </div>
             </div>
+            </a>
+            <a href="<?=Yii::$app->urlManager->createUrl('menu/index')?>">
             <div class="col-xs-12 col-md-6 col-lg-3">
                 <div class="panel panel-orange panel-widget">
                     <div class="row no-padding">
                         <div class="col-sm-3 col-lg-5 widget-left">
-                            <em class="glyphicon glyphicon-comment glyphicon-l"></em>
+                            <em class="glyphicon glyphicon-cutlery glyphicon-l"></em>
                         </div>
                         <div class="col-sm-9 col-lg-7 widget-right">
-                            <div class="large">52</div>
-                            <div class="text-muted">Comments</div>
+                            <div class="large"><?=$data['menus'] ? $data['menus']: '0'?></div>
+                            <div class="text-muted">Menus</div>
                         </div>
                     </div>
                 </div>
             </div>
+            </a>
+            <a href="<?=Yii::$app->urlManager->createUrl('user/index')?>">
             <div class="col-xs-12 col-md-6 col-lg-3">
                 <div class="panel panel-teal panel-widget">
                     <div class="row no-padding">
@@ -56,21 +61,22 @@ $this->registerJsFile('js/bootstrap-table.js');
                             <em class="glyphicon glyphicon-user glyphicon-l"></em>
                         </div>
                         <div class="col-sm-9 col-lg-7 widget-right">
-                            <div class="large">24</div>
-                            <div class="text-muted">New Users</div>
+                            <div class="large"><?=$data['users'] ? $data['users']: '0'?></div>
+                            <div class="text-muted">Total Users</div>
                         </div>
                     </div>
                 </div>
             </div>
+            </a>
             <div class="col-xs-12 col-md-6 col-lg-3">
                 <div class="panel panel-red panel-widget">
                     <div class="row no-padding">
                         <div class="col-sm-3 col-lg-5 widget-left">
-                            <em class="glyphicon glyphicon-stats glyphicon-l"></em>
+                            <em class="glyphicon glyphicon-usd glyphicon-l"></em>
                         </div>
                         <div class="col-sm-9 col-lg-7 widget-right">
-                            <div class="large">25.2k</div>
-                            <div class="text-muted">Visitors</div>
+                            <div class="large">￥<?=$data['money'] ? $data['money']: '0'?></div>
+                            <div class="text-muted">Total Money</div>
                         </div>
                     </div>
                 </div>
