@@ -2,6 +2,7 @@
 namespace app\controllers;
 use yii\web\Controller;
 use app\models\Order;
+use app\models\OrderDetail;
 use yii;
 
 class OrderController extends Controller{
@@ -13,14 +14,32 @@ class OrderController extends Controller{
     public function actionIndex()
     {
     	//获取订单信息
-    	$order = Order:: find()->where(['order_status' => '0'])->asArray()->all();
+    	$order = Order::find()->where(['w_order.order_status' => '0'])->joinWith('orderDetail as o')->asArray()->all();
+        $str = '';
+
+        foreach ($order as $key => &$value) {
+            foreach($value['orderDetail'] as $k=>$v){
+                $str .= "(".$v['menu']['menu_name'].' <font color="red">￥'.$v['menu']['price'].' </font> )X '.$v['menu_number'].'</br>';
+            }
+            $value['detail'] = $str;
+            $str = '';//清空str
+        }
         return $this->render('index',['order'=>$order]);
     }
 
     public function actionSuccess()
     {
     	//获取订单信息
-    	$order = Order:: find()->where(['order_status' => '1'])->asArray()->all();
+    	$order = Order::find()->where(['w_order.order_status' => '1'])->joinWith('orderDetail as o')->asArray()->all();
+        $str = '';
+
+         foreach ($order as $key => &$value) {
+            foreach($value['orderDetail'] as $k=>$v){
+                $str .= "(".$v['menu']['menu_name'].' <font color="red">￥'.$v['menu']['price'].' </font> )X '.$v['menu_number'].'</br>';
+            }
+            $value['detail'] = $str;
+            $str = '';//清空str
+        }
         return $this->render('success',['order'=>$order]);
     }
 
@@ -42,6 +61,9 @@ class OrderController extends Controller{
             }
         }
     }
+
+
+    
 }
 
 

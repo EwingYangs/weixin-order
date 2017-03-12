@@ -31,6 +31,7 @@ use app\models\Order;
                                 <th data-field="order_time" data-sortable="true">订单生成时间</th>
                                 <th data-field="pay_status">支付状态</th>
                                 <th data-field="pay_time" data-sortable="true">支付时间</th>
+                                <th data-field="detail">订单详情</th>
                                 <th data-field="total_price" data-sortable="true">订单的总价</th>
                                 <th data-field="table_number" data-sortable="true">桌子编号</th>
                                 <th data-field="remark" data-sortable="true">订单备注</th>
@@ -48,6 +49,7 @@ use app\models\Order;
                                     <td><?=date('Y-m-d H:i',$v['order_time'])?></td>
                                     <td><?=Order::$pay_status[$v['pay_status']]?></td>
                                     <td><?=date('Y-m-d H:i',$v['pay_time'])?></td>
+                                    <td><?=$v['detail']?></td>
                                     <td><?='￥'.$v['total_price']?></td>
                                     <td><?=$v['table_number']?></td>
                                     <td><?=$v['remark']?></td>

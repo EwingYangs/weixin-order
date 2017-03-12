@@ -62,5 +62,12 @@ class Order extends \yii\db\ActiveRecord
     }
 
 
-   
+   public function getOrderDetail()
+    {
+    /**
+    * 第一个参数为要关联的字表模型类名称，
+    *第二个参数指定 通过子表的 customer_id 去关联主表的 id 字段
+    */
+        return $this->hasMany(OrderDetail::className(), ['order_id' => 'id'])->joinWith('menu as w');
+    }
 }
