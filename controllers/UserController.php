@@ -2,6 +2,7 @@
 namespace app\controllers;
 use yii\web\Controller;
 use app\models\WUser;
+use yii\filters\AccessControl;
 
 class UserController extends Controller{
 	 /**
@@ -9,6 +10,19 @@ class UserController extends Controller{
      *
      * @return string
      */
+    public function behaviors(){
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
+        ];
+    }
     public function actionIndex()
     {
     	//获取用户信息

@@ -3,6 +3,7 @@ namespace app\controllers;
 use yii\web\Controller;
 use app\models\Order;
 use app\models\OrderDetail;
+use yii\filters\AccessControl;
 use yii;
 
 class OrderController extends Controller{
@@ -11,6 +12,19 @@ class OrderController extends Controller{
      *
      * @return string
      */
+    public function behaviors(){
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
+        ];
+    }
     public function actionIndex()
     {
     	//获取订单信息

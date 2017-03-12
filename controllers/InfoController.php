@@ -3,6 +3,7 @@ namespace app\controllers;
 use yii\web\Controller;
 use Yii;
 use app\models\Info;
+use yii\filters\AccessControl;
 
 class InfoController extends Controller{
 	 /**
@@ -10,6 +11,20 @@ class InfoController extends Controller{
      *
      * @return string
      */
+    public function behaviors(){
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
+        ];
+    }
+
     public function actionIndex()
     {
     	$model = new Info();

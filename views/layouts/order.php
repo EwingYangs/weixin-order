@@ -91,11 +91,11 @@ if( Yii::$app->getSession()->hasFlash('error') ) {
                 <a class="navbar-brand" href="#"><span>微信点餐系统</span>&nbsp;后台管理</a>
                 <ul class="user-menu">
                     <li class="dropdown pull-right">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> User <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> <?=Yii::$app->user->Identity->username?> <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="#"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
                             <li><a href="#"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
-                            <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                            <li><a href="<?=Yii::$app->urlManager->createUrl('site/logout')?>"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -106,7 +106,7 @@ if( Yii::$app->getSession()->hasFlash('error') ) {
     <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
             <div class="panel-heading"><span class="glyphicon glyphicon-cog"></span>操作菜单</div>
         <ul class="nav menu">
-            <li <?php if(Yii::$app->controller->id == 'index'){echo 'class="active"';}?>><a href="<?=Yii::$app->urlManager->createUrl('index/index');?>"><span class="glyphicon glyphicon-home"></span> 主页</a></li>
+            <li <?php if(Yii::$app->controller->id == 'index'){echo 'class="active"';}?>><a href="<?=Yii::$app->urlManager->createUrl('site/index');?>"><span class="glyphicon glyphicon-home"></span> 主页</a></li>
             <li <?php if(Yii::$app->controller->id == 'menu'){echo 'class="active"';}?>><a href="<?=Yii::$app->urlManager->createUrl('menu/index');?>"><span class="glyphicon glyphicon-dashboard"></span> 菜单管理</a></li>
             <li <?php if(Yii::$app->controller->id == 'type'){echo 'class="active"';}?>><a href="<?=Yii::$app->urlManager->createUrl('type/index');?>"><span class="glyphicon glyphicon-edit"></span> 类型管理</a></li>
             <li <?php if(Yii::$app->controller->id == 'user'){echo 'class="active"';}?>><a href="<?=Yii::$app->urlManager->createUrl('user/index');?>"><span class="glyphicon glyphicon-user"></span> 用户管理</a></li>

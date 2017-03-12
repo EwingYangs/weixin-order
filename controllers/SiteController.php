@@ -8,6 +8,10 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\Common;
+use app\models\WUser;
+use app\models\Order;
+use app\models\Menu;
 
 class SiteController extends Controller
 {
@@ -19,10 +23,10 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout'],
+                'only' => ['logout','index'],
                 'rules' => [
                     [
-                        'actions' => ['logout'],
+                        'actions' => ['logout','index'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -31,7 +35,7 @@ class SiteController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'logout' => ['post'],
+                    'logout' => ['get'],
                 ],
             ],
         ];
@@ -60,7 +64,18 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $users = WUser:: find()->count();
+        $orders = Order::find()->where(['order_status' => '0'])->count();
+        $money = Order::find()->select('sum(total_price) as money')->where(['order_status' => '1'])->asArray()->one();
+        $money = $money['money'];
+        $menus = Menu:: find()->count();
+        $data = array(
+                'users' => $users,
+                'orders' => $orders,
+                'menus' => $menus,
+                'money' => $money,
+            );
+        return $this->render('index',['data' => $data]);
     }
 
     /**
@@ -73,12 +88,14 @@ class SiteController extends Controller
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
-
         $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+        if($post = Yii::$app->request->post()){
+            $post['LoginForm']['password'] = md5($post['LoginForm']['password']);
+            if ($model->load($post) && $model->login()) {
+                return $this->goBack();
+            }
         }
-        return $this->render('login', [
+        return $this->renderPartial('login', [
             'model' => $model,
         ]);
     }
@@ -92,7 +109,7 @@ class SiteController extends Controller
     {
         Yii::$app->user->logout();
 
-        return $this->goHome();
+        return $this->redirect(Yii::$app->urlManager->createUrl('site/login'));
     }
 
     /**

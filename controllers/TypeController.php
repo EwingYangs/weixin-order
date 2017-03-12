@@ -3,6 +3,7 @@ namespace app\controllers;
 use yii\web\Controller;
 use Yii;
 use app\models\MenuType;
+use yii\filters\AccessControl;
 
 class TypeController extends Controller{
 	 /**
@@ -10,6 +11,19 @@ class TypeController extends Controller{
      *
      * @return string
      */
+    public function behaviors(){
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
+        ];
+    }
     public function actionIndex()
     {
     	//查询出全部类型

@@ -5,6 +5,7 @@ use app\models\MenuType;
 use app\models\Menu;
 use app\models\UploadForm;
 use yii\web\UploadedFile;
+use yii\filters\AccessControl;
 use Yii;
 
 class MenuController extends Controller{
@@ -13,6 +14,20 @@ class MenuController extends Controller{
      *
      * @return string
      */
+    public function behaviors(){
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
+        ];
+    }
+
     public function actionIndex()
     {
     	//查询出所有的类型
