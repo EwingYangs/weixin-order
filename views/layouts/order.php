@@ -106,11 +106,11 @@ if( Yii::$app->getSession()->hasFlash('error') ) {
     <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
             <div class="panel-heading"><span class="glyphicon glyphicon-cog"></span>操作菜单</div>
         <ul class="nav menu">
-            <li <?php if(Yii::$app->controller->id == 'index'){echo 'class="active"';}?>><a href="<?=Yii::$app->urlManager->createUrl('site/index');?>"><span class="glyphicon glyphicon-home"></span> 主页</a></li>
+            <li <?php if(Yii::$app->controller->id == 'site'){echo 'class="active"';}?>><a href="<?=Yii::$app->urlManager->createUrl('site/index');?>"><span class="glyphicon glyphicon-home"></span> 主页</a></li>
             <li <?php if(Yii::$app->controller->id == 'menu'){echo 'class="active"';}?>><a href="<?=Yii::$app->urlManager->createUrl('menu/index');?>"><span class="glyphicon glyphicon-dashboard"></span> 菜单管理</a></li>
             <li <?php if(Yii::$app->controller->id == 'type'){echo 'class="active"';}?>><a href="<?=Yii::$app->urlManager->createUrl('type/index');?>"><span class="glyphicon glyphicon-edit"></span> 类型管理</a></li>
             <li <?php if(Yii::$app->controller->id == 'user'){echo 'class="active"';}?>><a href="<?=Yii::$app->urlManager->createUrl('user/index');?>"><span class="glyphicon glyphicon-user"></span> 用户管理</a></li>
-            <li <?php if(Yii::$app->controller->id == 'table'){echo 'class="active"';}?>><a href="<?=Yii::$app->urlManager->createUrl('info/index');?>"><span class="glyphicon glyphicon-stats"></span> 餐厅基本信息</a></li>
+            <li <?php if(Yii::$app->controller->id == 'info'){echo 'class="active"';}?>><a href="<?=Yii::$app->urlManager->createUrl('info/index');?>"><span class="glyphicon glyphicon-stats"></span> 餐厅基本信息</a></li>
             <li <?php if(Yii::$app->controller->id == 'data'){echo 'class="active"';}?>><a href="<?=Yii::$app->urlManager->createUrl('data/index');?>"><span class="glyphicon glyphicon-list-alt"></span> 数据分析</a></li>
             <li <?php if(Yii::$app->controller->id == 'send'){echo 'class="active"';}?>><a href="<?=Yii::$app->urlManager->createUrl('send/index');?>"><span class="glyphicon glyphicon-pencil"></span> 微信推送</a></li>
             <li class="parent <?php if(Yii::$app->controller->id == 'order'){echo "active";}?>" >
