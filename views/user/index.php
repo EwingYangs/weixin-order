@@ -2,7 +2,7 @@
 $this->title = '用户管理';
 $this->context->layout = 'order';
 $this->registerJsFile(Yii::$app->params['js_url'].'bootstrap-table.js');
-
+use app\models\WUser;
 ?>
 
 <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">           
@@ -42,7 +42,7 @@ $this->registerJsFile(Yii::$app->params['js_url'].'bootstrap-table.js');
                                     <td><?=$v['id']?></td>
                                     <td><?=$v['nickName']?></td>
                                     <!-- <td><img src="<?=$v['avatarUrl']?>" width="80"></td> -->
-                                    <td><?=$v['gender']?></td>
+                                    <td><?=WUser::$gender[$v['gender']]?></td>
                                     <td><?=$v['credit']?></td>
                                     <td><?=$v['openid']?></td>
                                     <td><?=date('Y-m-d H:i',$v['create_at'])?></td>

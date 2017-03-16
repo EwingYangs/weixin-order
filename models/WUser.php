@@ -8,18 +8,19 @@ use Yii;
 
 class WUser extends \yii\db\ActiveRecord
 {
+    public static $gender = ['未知','男','女'];
     //删除和新增加的行为
-    // public function behaviors()
-    // {
-    //     // return [
-    //     //     'timestamp' => [
-    //     //         'class' => 'yii\behaviors\TimestampBehavior',
-    //     //         'attributes' => [
-    //     //             ActiveRecord::EVENT_BEFORE_INSERT => ['create_at'],
-    //     //         ],
-    //     //     ],
-    //     // ];
-    // }
+    public function behaviors()
+    {
+        return [
+            'timestamp' => [
+                'class' => 'yii\behaviors\TimestampBehavior',
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => ['create_at'],
+                ],
+            ],
+        ];
+    }
 
     /**
      * @inheritdoc
