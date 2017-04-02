@@ -1,5 +1,6 @@
 <?php
 $this->title = '点餐首页';
+use app\models\Order;
 ?>
 <style>
 	
@@ -65,34 +66,26 @@ $this->title = '点餐首页';
 	</div>
 	<div class="am-hide tabslist list-tabs" id="div_history">
 		<ul class="address-list">
-	    	<li class="curr">
-			<p>订餐人：徐女士&nbsp;&nbsp;&nbsp;&nbsp;订单号：NB1645995</p>
+			<?if($order){?>
+			<?php foreach($order as $k=>$v){?>
+	    	<li>
+			<p>订餐人：<?=$v['wUser']['nickName']?>&nbsp;&nbsp;&nbsp;&nbsp;订单号：<?=$v['id']?></p>
 			<!-- <p class="order-add1">信息：排骨X5+鱼X3</p> -->
-			<p class="order-add1">订单总价：100元<span style="float:right">订单状态：已支付</span></p>
-			<p class="order-add1">下单时间：2017-1-28 19:48</p>
+			<p class="order-add1">订单总价：<?=$v['total_price']?>元<span style="float:right">订单状态：<?=Order::$order_status[$v['order_status']]?></span></p>
+			<p class="order-add1">下单时间：<?=date('Y-m-d H:i:s',$v['order_time'])?></p>
+			<p class="order-add1">支付状态：<?=Order::$pay_status[$v['pay_status']]?></p>
 			<hr />
 			<div class="address-cz">
 				<label class="am-radio am-warning">
-					<input type="radio" name="radio1" value="" data-am-ucheck checked>餐桌号:512
+					<input type="radio" name="radio1" value="" data-am-ucheck checked>餐桌号:<?=$v['table_number']?>
 				</label>
+                 <button  order_id= "<?=$v['id']?>" id="detail" style="margin-left:60px;" type="button" class="am-btn am-btn-warning am-radius am-btn-xs">查看详情</button>
                  <button  type="button" class="am-btn am-btn-success am-radius am-btn-xs am-fr" data-am-modal="{target: '#my-alert'}">取消订单</button>
 			</div>
 			</li>
-			<li class="">
-				<p>订餐人：徐女士&nbsp;&nbsp;&nbsp;&nbsp;订单号：NB1645995</p>
-				<!-- <p class="order-add1">信息：排骨X5+鱼X3</p> -->
-				<p class="order-add1">订单总价：100元<span style="float:right">订单状态：已支付</span></p>
-				<p class="order-add1">下单时间：2017-1-28 19:48</p>
-				<hr />
-				<div class="address-cz">
-					<label class="am-radio am-warning">
-						<input type="radio" name="radio2" value="" data-am-ucheck checked>餐桌号:512
-					</label>
-					
-                <!--  <a type="button" class="doc-confirm-toggle" data-am-modal="{target: '#my-alert'}"><i class="am-icon-trash am-icon-sm" ></i>&nbsp;取消</a> -->
-                 <button  type="button" class="am-btn am-btn-success am-radius am-btn-xs am-fr" data-am-modal="{target: '#my-alert'}">取消订单</button>
-				</div>
-			</li>
+			<?php }}else{?>
+			暂时没有订单！
+			<?php }?>
 	    </ul>
 		
 	</div>
@@ -137,6 +130,11 @@ $this->title = '点餐首页';
 
 <?php
     $this->beginBlock('service') ?>
+	
+	$('#detail').click(function(){
+		order_id = $(this).attr('order_id');
+		location.href = "<?=Yii::$app->urlManager->createUrl('wechat/index/order/').'?id='?>"+order_id;
+	});
 
     $('#div_history').find('li').click(function(){
 		$('#div_history').find('li').removeClass();
@@ -146,8 +144,6 @@ $this->title = '点餐首页';
     		$('#click_div').find('li').removeClass('am-active');
 			$(this).addClass('am-active');
 			var name = '#div_'+$(this).attr('id');
-			console.log($('#name'));
-			console.log(name);
 			$('#box').children('.tabslist').addClass('am-hide');
 			$(name).removeClass('am-hide');
 			$(name).addClass('am-show');

@@ -10,6 +10,7 @@ class Order extends \yii\db\ActiveRecord
 {
 
     public static $pay_status = ['未支付','支付完成'];
+    public static $order_status = ['等待接单','已接单'];
     //删除和新增加的行为
     public function behaviors()
     {
@@ -69,5 +70,9 @@ class Order extends \yii\db\ActiveRecord
     *第二个参数指定 通过子表的 customer_id 去关联主表的 id 字段
     */
         return $this->hasMany(OrderDetail::className(), ['order_id' => 'id'])->joinWith('menu as w');
+    }
+
+    public function getWUser(){
+        return $this->hasOne(WUser::className(), ['id' => 'user_id']);
     }
 }

@@ -3,11 +3,11 @@ namespace app\modules\wechat\controllers;
 use yii;
 use yii\web\Controller;
 use app\models\WUser;
+use app\models\Order;
 
 class IndexController extends Controller{
 	public function actionIndex(){
 		$code = Yii::$app->request->get('code');
-		$userInfo = null;
 		if($code){
 			//如果传来code就做用户入库处理
 			require 'wechat/wechat.php';
@@ -21,11 +21,17 @@ class IndexController extends Controller{
 			if(!$user){
 				$user_model->addUser($userInfo);
 			}
+			//订单信息
+			$userid = $user['id'];
+			$order = Order::find()->where(['user_id' => $userid])->asArray()->joinWith('wUser as u')->all();
 		}
-		return $this->render('index',['userInfo' => $userInfo]);
+		$userInfo = isset($userInfo) ? $userInfo : null;
+		$order = isset($order) ? $order : null;
+		return $this->render('index',['userInfo' => $userInfo,'order' => $order]);
 	}
 
 	public function actionOrder(){
+		$order_id = Yii::$app->request->get('id');
 		return $this->render('order');
 	}
 
