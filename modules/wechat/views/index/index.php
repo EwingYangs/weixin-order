@@ -133,7 +133,7 @@ use app\models\Order;
 	
 	$('#detail').click(function(){
 		order_id = $(this).attr('order_id');
-		location.href = "<?=Yii::$app->urlManager->createUrl('wechat/index/order/').'?id='?>"+order_id;
+		location.href = "<?=Yii::$app->urlManager->createUrl('wechat/index/detail/').'?id='?>"+order_id;
 	});
 
     $('#div_history').find('li').click(function(){

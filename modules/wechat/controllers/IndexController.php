@@ -25,6 +25,7 @@ class IndexController extends Controller{
 			$userid = $user['id'];
 			$order = Order::find()->where(['user_id' => $userid])->asArray()->joinWith('wUser as u')->all();
 		}
+		$order = Order::find()->where(['user_id' => '1'])->asArray()->joinWith('wUser as u')->all();
 		$userInfo = isset($userInfo) ? $userInfo : null;
 		$order = isset($order) ? $order : null;
 		return $this->render('index',['userInfo' => $userInfo,'order' => $order]);
@@ -33,6 +34,13 @@ class IndexController extends Controller{
 	public function actionOrder(){
 		$order_id = Yii::$app->request->get('id');
 		return $this->render('order');
+	}
+
+
+	public function actionDetail(){
+		$order_id = Yii::$app->request->get('id');
+		$detail = Order::find()->where(['w_order.id' => $order_id])->joinWith('orderDetail as o')->asArray()->one();
+		return $this->render('order_detail',['detail'=> $detail]);
 	}
 
 
