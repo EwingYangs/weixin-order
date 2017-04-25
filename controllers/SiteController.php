@@ -69,13 +69,19 @@ class SiteController extends Controller
         $money = Order::find()->select('sum(total_price) as money')->where(['order_status' => '1'])->asArray()->one();
         $money = $money['money'];
         $menus = Menu:: find()->count();
+
+        //每天的收入金额和订单数
+        $count = 30;
+        $order_model = new Order();
+        $days_income = $order_model->getDaysIncome($count);
+        $days_order = $order_model->getDaysOrder($count);
         $data = array(
                 'users' => $users,
                 'orders' => $orders,
                 'menus' => $menus,
                 'money' => $money,
             );
-        return $this->render('index',['data' => $data]);
+        return $this->render('index',['data' => $data,'days_income' => $days_income,'days_order' => $days_order]);
     }
 
     /**
@@ -92,7 +98,7 @@ class SiteController extends Controller
         if($post = Yii::$app->request->post()){
             $post['LoginForm']['password'] = md5($post['LoginForm']['password']);
             if ($model->load($post) && $model->login()) {
-                return $this->goBack();
+                $this->redirect(Yii::$app->urlManager->createUrl('site/index'));
             }
         }
         return $this->renderPartial('login', [

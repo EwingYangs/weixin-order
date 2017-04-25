@@ -78,13 +78,25 @@ $this->title = '下单页面';
 		  </div>
 		</div>
 		
+
+		<!--支付-->
+	    <div class="am-modal am-modal-confirm" tabindex="-1" id="doc-modal-3">
+		  <div class="am-modal-dialog">
+		    <div class="am-modal-bd" style="height: 80px; line-height: 80px;">  您确定要支付吗？</div>
+		    <div class="am-modal-footer">
+		      <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+		      <span class="am-modal-btn" data-am-modal-confirm id="pay">确定</span>
+		    </div>
+		  </div>
+		</div>
+
         <div class="juli"></div>
-	    <textarea placeholder="备注说明" class="bz-infor"></textarea>
+	    <textarea placeholder="备注说明" class="bz-infor" id="remark"></textarea>
 	    <div class="juli"></div>
 	    <div class="pricebox">
 	    	<p>总价：<i><span id="momey">12<span>.00</i>元（<em><span id="count">1<span></em>份）</p>
 	    	<p>请选择支付方式并确认下单：</p>
-	    	<a href="<?=Yii::$app->urlManager->createUrl('wechat/index/wx')?>"><button class="paybtn" type="button" > 微信支付</button></a>
+	    	<a href="javascript:void(0)"><button type="button" class="paybtn" data-am-modal="{target: '#doc-modal-3', closeViaDimmer: 0}"> 微信支付</button></a>
 	    </div>
 	    
 		 <div class="am-modal am-modal-confirm" tabindex="-1" id="my-confirm">
@@ -104,10 +116,49 @@ $this->title = '下单页面';
 		</script>
 	<?php
     $this->beginBlock('service') ?>
-   //购物数量加减
+   		//假支付
+   		$('#pay').click(function(){
+			if($('#select_table').html() == '请选择桌台'){
+				alert('必须填写餐桌号');
+				return false;
+			}
+
+			if($('#people').html() == '请选择就餐人数'){
+				alert('请选择就餐人数');
+				return false;
+			}
+
+			var table = $('#select_table').html();
+			var people = $('#people').html();
+			var remark =  $('#remark').val();
+			var money = $('#momey').html();
+			var value = [];
+			$('#menu_ul').find('li').each(function(k,v){
+				var name = $(v).find('.name').html();
+	 			var price = $(v).find('.price').html().substr(1);
+	 			var num = parseInt($(v).find('#num').val());
+				if(num > 0){
+ 					value.push([name,price,num]);
+ 				}
+			});
+			$.ajax({
+				type : 'post',
+				url : "<?=Yii::$app->urlManager->createUrl('wechat/index/pay')?>",
+				data : {table:table,people:people,remark:remark,money:money,value:value},
+				success : function(data){
+					if(data == 'success'){
+						location.href="<?=Yii::$app->urlManager->createUrl('wechat/index/index')?>";
+					}else{
+						console.log(data);
+					}
+				}
+			});
+   		});
+
+	//购物数量加减
 		$(function(){
 				//ajax获取类型
-				url = "<?=Yii::$app->urlManager->createUrl('api/get-table-number')?>?room_id="+1;
+				url = "<?=Yii::$app->urlManager->createUrl('api/get-table-number')?>&room_id="+1;
 				$.ajax({
 					type : 'get',
 					dataType : 'json',

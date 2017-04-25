@@ -28,7 +28,7 @@ class OrderController extends Controller{
     public function actionIndex()
     {
     	//获取订单信息
-    	$order = Order::find()->where(['w_order.order_status' => '0'])->joinWith('orderDetail as o')->asArray()->all();
+    	$order = Order::find()->where(['w_order.order_status' => '0'])->joinWith('orderDetail as o')->joinWith('wUser as u')->asArray()->all();
         $str = '';
 
         foreach ($order as $key => &$value) {
@@ -44,7 +44,7 @@ class OrderController extends Controller{
     public function actionSuccess()
     {
     	//获取订单信息
-    	$order = Order::find()->where(['w_order.order_status' => '1'])->joinWith('orderDetail as o')->asArray()->all();
+    	$order = Order::find()->where(['w_order.order_status' => '1'])->joinWith('orderDetail as o')->joinWith('wUser as u')->asArray()->all();
         $str = '';
 
          foreach ($order as $key => &$value) {

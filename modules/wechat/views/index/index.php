@@ -11,7 +11,7 @@ use app\models\Order;
 	
     <div class="am-header-right">
         <span class="am-monospace" style="color:red"><span class="am-icon-flag"></span>&nbsp;下单可享受，每满30减3</span>
-        <span class="am-monospace" style="float:right;color:gray">当前的积分：2</span>
+        <span class="am-monospace" style="float:right;color:gray">当前的积分：<?=isset($user['credit']) ? $user['credit'] : 0?></span>
     </div>
 	</div>
 </header>
@@ -54,7 +54,7 @@ use app\models\Order;
 		    		<i class="am-icon-angle-right"></i>
 		    	</li>
 		    	<li class="time">
-		    		<span>线上积分</span><span style="float:right;color:red">34.00
+		    		<span>线上积分</span><span style="float:right;color:red"><?=isset($user['credit']) ? $user['credit'] : 0?>
 		    		</span>
 		    		<i class="am-icon-angle-right"></i>
 		    	</li>
@@ -66,7 +66,7 @@ use app\models\Order;
 	</div>
 	<div class="am-hide tabslist list-tabs" id="div_history">
 		<ul class="address-list">
-			<?if($order){?>
+			<?php if($order){?>
 			<?php foreach($order as $k=>$v){?>
 	    	<li>
 			<p>订餐人：<?=$v['wUser']['nickName']?>&nbsp;&nbsp;&nbsp;&nbsp;订单号：<?=$v['id']?></p>
@@ -79,11 +79,12 @@ use app\models\Order;
 				<label class="am-radio am-warning">
 					<input type="radio" name="radio1" value="" data-am-ucheck checked>餐桌号:<?=$v['table_number']?>
 				</label>
-                 <button  order_id= "<?=$v['id']?>" id="detail" style="margin-left:60px;" type="button" class="am-btn am-btn-warning am-radius am-btn-xs">查看详情</button>
+                 <button  order_id= "<?=$v['id']?>" name="detail" style="margin-left:60px;" type="button" class="am-btn am-btn-warning am-radius am-btn-xs">查看详情</button>
                  <button  type="button" class="am-btn am-btn-success am-radius am-btn-xs am-fr" data-am-modal="{target: '#my-alert'}">取消订单</button>
 			</div>
 			</li>
-			<?php }}else{?>
+			<?php }?>
+			<?php } else{?>
 			暂时没有订单！
 			<?php }?>
 	    </ul>
@@ -130,11 +131,11 @@ use app\models\Order;
 
 <?php
     $this->beginBlock('service') ?>
-	
-	$('#detail').click(function(){
+	$("button[name = 'detail']").click(function(){
 		order_id = $(this).attr('order_id');
-		location.href = "<?=Yii::$app->urlManager->createUrl('wechat/index/detail/').'?id='?>"+order_id;
+		location.href = "<?=Yii::$app->urlManager->createUrl('wechat/index/detail/').'&id='?>"+order_id;
 	});
+	
 
     $('#div_history').find('li').click(function(){
 		$('#div_history').find('li').removeClass();
@@ -151,7 +152,7 @@ use app\models\Order;
     $(function() {
     	$('#doc-my-tabs').tabs();
   	})
-    	var serverName = "http://www.gdqcyl.pub/";
+    	var serverName = "http://www.itbasket.top/";
     	var orderUrl = "<?=Yii::$app->urlManager->createUrl('wechat/index/order')?>";
 $(function(){
 	//ajax获取类型
@@ -191,7 +192,7 @@ function show(li){
 	$('li').removeClass('current');
 	$(li).addClass('current');
 	//ajax获取菜单
-	url = "<?=Yii::$app->urlManager->createUrl('api/get-menu')?>?type_id="+type_id;
+	url = "<?=Yii::$app->urlManager->createUrl('api/get-menu')?>&type_id="+type_id;
 	$.ajax({
 		type : 'get',
 		dataType : 'json',
