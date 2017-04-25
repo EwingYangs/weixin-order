@@ -112,6 +112,7 @@ if( Yii::$app->getSession()->hasFlash('error') ) {
             <li <?php if(Yii::$app->controller->id == 'user'){echo 'class="active"';}?>><a href="<?=Yii::$app->urlManager->createUrl('user/index');?>"><span class="glyphicon glyphicon-user"></span> 用户管理</a></li>
             <li <?php if(Yii::$app->controller->id == 'info'){echo 'class="active"';}?>><a href="<?=Yii::$app->urlManager->createUrl('info/index');?>"><span class="glyphicon glyphicon-stats"></span> 餐厅基本信息</a></li>
             <li <?php if(Yii::$app->controller->id == 'data'){echo 'class="active"';}?>><a href="<?=Yii::$app->urlManager->createUrl('data/index');?>"><span class="glyphicon glyphicon-list-alt"></span> 数据分析</a></li>
+             <li <?php if(Yii::$app->controller->id == 'finacial'){echo 'class="active"';}?>><a href="<?=Yii::$app->urlManager->createUrl('finacial/index');?>"><span class="glyphicon glyphicon-book"></span> 财务管理</a></li>
             <li <?php if(Yii::$app->controller->id == 'send'){echo 'class="active"';}?>><a href="<?=Yii::$app->urlManager->createUrl('send/index');?>"><span class="glyphicon glyphicon-pencil"></span> 微信推送</a></li>
             <li class="parent <?php if(Yii::$app->controller->id == 'order'){echo "active";}?>" >
                 <a href="<?=Yii::$app->urlManager->createUrl('order/index');?>">
