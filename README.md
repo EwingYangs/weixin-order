@@ -2,12 +2,17 @@
 - 流程图如下
 ![图片1.png](http://g.hiphotos.baidu.com/image/pic/item/314e251f95cad1c869c42804753e6709c93d5192.jpg)
 
-- 效果图如下
-- ![图片1.png](http://g.hiphotos.baidu.com/image/pic/item/7dd98d1001e93901af345c1d71ec54e736d196db.jpg)
+# 效果图如下
+- 点餐界面
+![图片1.png](http://g.hiphotos.baidu.com/image/pic/item/7dd98d1001e93901af345c1d71ec54e736d196db.jpg)
 
-- ![图片1.png](http://c.hiphotos.baidu.com/image/pic/item/f603918fa0ec08fa133ac28453ee3d6d55fbdadf.jpg)
+- 下单页面
+![图片1.png](http://c.hiphotos.baidu.com/image/pic/item/f603918fa0ec08fa133ac28453ee3d6d55fbdadf.jpg)
 
-- ![图片1.png](http://g.hiphotos.baidu.com/image/pic/item/0dd7912397dda144d3a0bd91b8b7d0a20cf4866c.jpg)
+- 管理后台
+![图片1.png](http://g.hiphotos.baidu.com/image/pic/item/0dd7912397dda144d3a0bd91b8b7d0a20cf4866c.jpg)
 
+
+- 开发环境: php+mysql+apache+微信公众号
 - 提示，因为个人原因缺乏支付功能
-- 后台测试地址www.itbasket.top/index.php?r=site  账号是ppoo 密码123456 公众号测试请联系加qq501978500
+- 后台测试地址暂时关闭，详情请QQ联系501978500
