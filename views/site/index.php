@@ -4,9 +4,9 @@
 
 $this->title = '管理后台首页';
 $this->context->layout = 'order';
-$this->registerJsFile('js/bootstrap-table.js');
-$this->registerJsFile('js/chart-data.js');
-$this->registerJsFile('js/chart.min.js');
+$this->registerJsFile('/js/bootstrap-table.js');
+$this->registerJsFile('/js/chart-data.js');
+$this->registerJsFile('/js/chart.min.js');
 ?>
 <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">           
         <div class="row">
@@ -151,7 +151,6 @@ $this->registerJsFile('js/chart.min.js');
         </div><!--/.row-->
     </div>  <!--/.main-->
 <script>
-var days_income = '<?=$days_income["days_income"]?>';
-var days_order = '<?=$days_order["days_order"]?>';
-var days = '<?=$days_income["days"]?>';
-</script>
+var days_income = <?=$days_income["days_income"]?>;
+var days_order = <?=$days_order["days_order"]?>;
+var days = <?=$days_income["days"]?>;</script>

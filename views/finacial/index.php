@@ -36,7 +36,7 @@ use app\models\Order;
                             <?php foreach($order as $k=>$v){?>
                                 <tr>
                                     <td data-field="state" data-checkbox="true" >Item ID</td>
-                                    <td><?=$v['transaction_id']?></td>
+                                    <td><?=$v['id']?></td>
                                     <td><?=$v['wUser']['nickName']?></td>
                                     <td><?=Order::$pay_status[$v['pay_status']]?></td>
                                     <td><?=date('Y-m-d H:i',$v['pay_time'])?></td>
