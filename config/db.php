@@ -2,8 +2,8 @@
 
 return [
     'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=localhost;dbname=weixin',
+    'dsn' => 'mysql:host=localhost;dbname=weixinorder',
     'username' => 'root',
-    'password' => 'wade',
+    'password' => '123456',
     'charset' => 'utf8',
 ];

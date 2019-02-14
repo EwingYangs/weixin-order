@@ -2,9 +2,6 @@
 $this->title = '点餐首页';
 use app\models\Order;
 ?>
-<style>
-	
-</style>
 <!-- 头部信息 -->
 <header data-am-widget="header" class="am-header am-header-default sq-head">
     <div class="am-tab-panel am-fade am-in am-active" >
@@ -31,11 +28,8 @@ use app\models\Order;
 		    	<div class="list-left" id="tab"></div>
 		    	<div class="list-right" id="content_div">
 		    	</div>
-		    	<!-- <form> -->
 		    </div>
 		</div>
-		<!--底部-->
-			<!-- <div style="height: 100px;"></div> -->
 		<div class="fix-bot">
 			   	  <a href="" class="list-js">合计：<i><span id="money">0<span>元</i><em>(<span id="number">0</span>份)</em></a>
 			   	  <a href="javascript:void(0)" id="affirm" class="list-jsk">立即下单</a>
@@ -92,15 +86,6 @@ use app\models\Order;
 	</div>
 </div>
 
-<!--  <div class="am-modal am-modal-confirm" tabindex="-1" id="my-confirm">
-		  <div class="am-modal-dialog">
-		    <div class="am-modal-bd" style="height: 80px; line-height: 80px;">  您确定要取消该订单吗？取消后支付的金额原路返回</div>
-		    <div class="am-modal-footer">
-		      <span class="am-modal-btn" data-am-modal-cancel>取消</span>
-		      <span class="am-modal-btn" data-am-modal-confirm>确定</span>
-		    </div>
-		  </div>
-		</div> -->
 <div class="am-modal am-modal-alert" tabindex="-1" id="my-alert">
   <div class="am-modal-dialog">
     <div class="am-modal-hd">取消订单</div>
@@ -113,16 +98,6 @@ use app\models\Order;
     </div>
   </div>
 </div>
-<!-- 模态框 -->
-<!-- <div class="am-modal am-modal-confirm" tabindex="-1" id="my-confirm">
-  <div class="am-modal-dialog">
-    <div class="am-modal-bd" style="height: 80px; line-height: 80px;">  您确定要清空饮品吗？</div>
-    <div class="am-modal-footer">
-      <span class="am-modal-btn" data-am-modal-cancel>取消</span>
-      <span class="am-modal-btn" data-am-modal-confirm>确定</span>
-    </div>
-  </div>
-</div> -->
 
 <script>
 
@@ -133,7 +108,8 @@ use app\models\Order;
     $this->beginBlock('service') ?>
 	$("button[name = 'detail']").click(function(){
 		order_id = $(this).attr('order_id');
-		location.href = "<?=Yii::$app->urlManager->createUrl('wechat/index/detail/').'&id='?>"+order_id;
+		location.href = "<?=Yii::$app->urlManager->createUrl(['wechat/index/detail/', 'id' => 'value'])?>";
+		url = url.replace('id', order_id);
 	});
 	
 
@@ -152,7 +128,6 @@ use app\models\Order;
     $(function() {
     	$('#doc-my-tabs').tabs();
   	})
-    	var serverName = "http://www.itbasket.top/";
     	var orderUrl = "<?=Yii::$app->urlManager->createUrl('wechat/index/order')?>";
 $(function(){
 	//ajax获取类型
@@ -192,7 +167,8 @@ function show(li){
 	$('li').removeClass('current');
 	$(li).addClass('current');
 	//ajax获取菜单
-	url = "<?=Yii::$app->urlManager->createUrl('api/get-menu')?>&type_id="+type_id;
+	url = "<?=Yii::$app->urlManager->createUrl(['api/get-menu', 'type_id' => 'value'])?>";
+	url = url.replace('value', type_id);
 	$.ajax({
 		type : 'get',
 		dataType : 'json',
@@ -205,7 +181,7 @@ function show(li){
 				type_list.push(type_id);
 				var html = '<ul class="list-pro" type="'+type_id+'">';
 				$(data).each(function(k,v){
-					html += '<li><a href=""><img src="'+serverName+v.menu_logo+'" class="list-pic"/></a><div class="shop-list-mid"><div class="tit">'+v.menu_name+'</div><div class="am-gallery-desc">￥'+v.price+'</div></div><div class="list-cart"><div class="d-stock "><a class="decrease" onclick="delete_menu(this)">-</a><input id="num" readonly="" class="text_box" name="num" type="text" value="0"><a class="increase" onclick="add(this)">+</a></div></div></li>';
+					html += '<li><a href=""><img src="'+v.menu_logo+'" class="list-pic"/></a><div class="shop-list-mid"><div class="tit">'+v.menu_name+'</div><div class="am-gallery-desc">￥'+v.price+'</div></div><div class="list-cart"><div class="d-stock "><a class="decrease" onclick="delete_menu(this)">-</a><input id="num" readonly="" class="text_box" name="num" type="text" value="0"><a class="increase" onclick="add(this)">+</a></div></div></li>';
 				});
 				html += '</ul>';
 				$('#content_div').append(html);

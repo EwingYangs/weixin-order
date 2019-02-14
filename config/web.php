@@ -53,15 +53,7 @@ $config = [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'rules' => [
-                
-            ],
         ],
-        
-        // 'urlManager' => [
-        //     'showScriptName' => false,
-        //     'enableStrictParsing' => true,
-        // ],
     ],
     'params' => $params,
 ];

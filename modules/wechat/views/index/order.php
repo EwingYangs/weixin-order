@@ -14,16 +14,6 @@ $this->title = '下单页面';
 	   </header>
 	   <div style="height: 49px;"></div>
 	    <ul class="eat-list" id="menu_ul">
-	    	
-	    	<!-- <li>
-	    		<span class="name">绿茶</span>
-	    		<em class="price">￥2.0</em>
-	    		<div class="d-stock ">
-	                <a class="decrease">-</a>
-	                <input id="num" readonly="" class="text_box" name="" type="text" value="1">
-	                <a class="increase">+</a>
-			    </div>
-	    	</li> -->
 	    </ul>
 	    <div class="juli"></div>
 	    <ul class="list-detail">
@@ -158,7 +148,7 @@ $this->title = '下单页面';
 	//购物数量加减
 		$(function(){
 				//ajax获取类型
-				url = "<?=Yii::$app->urlManager->createUrl('api/get-table-number')?>&room_id="+1;
+				url = "<?=Yii::$app->urlManager->createUrl(['api/get-table-number', 'room_id' => 1])?>";
 				$.ajax({
 					type : 'get',
 					dataType : 'json',

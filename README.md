@@ -1,5 +1,8 @@
-- 用Yii2框架做的一个微信公众号点餐系统，商家接入管理后台之后就可以在后台添加菜式的类型和菜式的名称，客户在微信扫描二维码关注公众号就可以在公众号点餐，支付的时候提交餐桌号还有相应的信息就可以下单，然后商家在后台可以查看到订单信息
-- 流程图如下
+# 项目介绍：
+
+- 用Yii2框架做的一个微信公众号点餐系统，商家接入管理后台之后就可以在后台添加菜式的类型和菜式的名称，客户在微信扫描二维码关注公众号就可以在公众号点餐，下单时提交餐桌号还有相应的信息到商家后台，商家在后台可以查看到订单信息
+
+- 业务流程图如下
 ![图片1.png](http://g.hiphotos.baidu.com/image/pic/item/314e251f95cad1c869c42804753e6709c93d5192.jpg)
 
 # 效果图如下
@@ -12,9 +15,37 @@
 - 管理后台
 ![图片1.png](http://g.hiphotos.baidu.com/image/pic/item/0dd7912397dda144d3a0bd91b8b7d0a20cf4866c.jpg)
 
+# 项目部署
 
-- 开发环境: php+mysql+apache+微信公众号
+- 下载项目
+
+        git clone https://github.com/EwingYangs/weixin-order
+        
+- composer 安装yii库
+
+        cd weixin-order
+        composer install
+        
+- nginx 配置，看根目录的nginx.conf文件
+
+- 数据库配置
+
+    - 创建数据库weixinorder
+    - 导入跟目录下的order.sql文件到数据库
+    - 在config/db.php 配置数据库信息
+ 
+            return [
+                'class' => 'yii\db\Connection',
+                'dsn' => 'mysql:host=localhost;dbname=weixinorder',
+                'username' => 'root',
+                'password' => '123456',
+                'charset' => 'utf8',
+            ];
+        
+- 点餐地址（前端） www.order.com
+- 后台地址（后台） www.order.com/site/index 账号密码为ppoo/123456
+
+# 其他
+
 - 提示，因为个人原因缺乏支付功能
-- 后台测试地址http://bxu2442600645.my3w.com/index.php?r=site%2Flogin
-- 登录账号密码：ppoo / 123456   ftp密码：123456ab
-- 详情请QQ联系501978500
+- 项目交流请QQ联系501978500
